@@ -1,29 +1,7 @@
 import 'package:flutter/material.dart';
-import 'cultura.dart';
 
-void main() {
-  runApp(const MainApp());
-}
-
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'HistoriaApp',
-      theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFFF7F4EB),
-        useMaterial3: true,
-      ),
-      home: const HomePage(), 
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class Cultura extends StatelessWidget {
+  const Cultura({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +37,7 @@ class HomePage extends StatelessWidget {
                     bottomRight: Radius.circular(24),
                   ),
                   image: DecorationImage(
-                    image: AssetImage('assets/HISTORIA3.png'),
+                    image: AssetImage('assets/cul.png'),
                     fit: BoxFit.cover,
                     alignment: Alignment(0, 0),
                   ),
@@ -68,16 +46,17 @@ class HomePage extends StatelessWidget {
               
               const SizedBox(height: 16),
 
+              // Título "Costumes"
               Column(
                 children: [
                   const Text(
-                    'País',
+                    'Costumes',
                     style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, bottom: 0),
                     child: Image.asset(
-                      'assets/Peru.jpg',
+                      'assets/lha.png',
                       width: 200,
                       height: 200,
                       errorBuilder: (context, error, stackTrace) {
@@ -89,31 +68,30 @@ class HomePage extends StatelessWidget {
               ),
 
               const SizedBox(height: 16),
-
+              
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: Row(
                   children: [
                     Expanded(
                       flex: 3,
-                      child: _buildRedTextBox('A história do Peru é uma das mais fascinantes do mundo, com mais de 5 milênios de evolução. A região foi o berço de Caral, a civilização mais antiga de todas as Américas, além de abrigar culturas intrigantes como Moche e Nazca. No século XV, os Incas unificaram esses povos, criando o maior império andino da história. Essa era de ouro foi interrompida em 1532 com a invasão espanhola, que transformou o território no coração do poder colonial e na maior fonte de ouro e prata da Coroa na América do Sul. O país conquistou sua independência em 1821.'),
+                      child: _buildRedTextBox('Os costumes peruanos unem a herança ancestral andina ao legado colonial espanhol. Nas montanhas, o idioma Quéchua continua vivo e os tecidos feitos à mão exibem cores vibrantes cheias de significados. Festas tradicionais celebram santos católicos em sincronia com rituais de agradecimento à Pachamama, mantendo viva a forte identidade do seu povo.'), 
                     ),
                     const SizedBox(width: 12),
                     Expanded(
-                      flex: 2,
-                      child: _buildSampleImage('mapa-peru.webp'),
+                      flex: 4,
+                      child: _buildSampleImage('assets/Lhama.jpg'), 
                     ),
                   ],
                 ),
               ),
 
-              // Elemento Central (Incas)
               Column(
                 mainAxisSize: MainAxisSize.min, 
                 children: [
                   const SizedBox(height: 40),
                   const Text(
-                    'Incas',
+                    'Comidas',
                     style: TextStyle(
                       fontSize: 50,               
                       fontWeight: FontWeight.bold, 
@@ -123,7 +101,7 @@ class HomePage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 0, bottom: 20.0), 
                     child: Image.asset(
-                      'assets/in.png', 
+                      'assets/c.png', 
                       width: 200,               
                       height: 200,
                       errorBuilder: (context, error, stackTrace) {
@@ -140,21 +118,21 @@ class HomePage extends StatelessWidget {
                   children: [
                     Expanded(
                       flex: 3,
-                      child: _buildRedTextBox('O Império Inca foi uma das maiores civilizações pré-colombianas, governado a partir da cidade sagrada de Cusco. Eles se destacaram por uma engenharia espetacular, interligando os Andes com a rede de caminhos Qhapaq Ñan. Além disso, criaram terraços agrícolas eficientes e ergueram construções de pedras perfeitamente encaixadas e resistentes a terremotos.'),
+                      child: SizedBox(
+                        height: 350, 
+                        child: _buildSampleImage('assets/comid.png'), 
+                      ),
                     ),
                     const SizedBox(width: 12),
                     Expanded(
-                      flex: 4,
-                      child: SizedBox(
-                        height: 400,
-                        child: _buildSampleImage('assets/incas.jpg'),
-                      ),
+                      flex: 2,
+                      child: _buildRedTextBox('A gastronomia do Peru é premiada mundialmente graças à sua imensa biodiversidade e séculos de imigração. A culinária local funde de forma genial ingredientes nativos milenares, como o ají e milhares de tipos de batatas, com técnicas e influências espanholas, africanas, chinesas e japonesas, criando pratos icônicos como o Ceviche e o Lomo Saltado.'), 
                     ),
                   ],
                 ),
               ),
               
-              const SizedBox(height: 32),
+              const SizedBox(height: 50),
 
               Padding(
                 padding: const EdgeInsets.only(bottom: 40.0),
@@ -167,16 +145,13 @@ class HomePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30),
                     ),
                   ),
-                  icon: const Icon(Icons.arrow_forward),
+                  icon: const Icon(Icons.arrow_back), 
                   label: const Text(
-                    'Ver Mais Detalhes',
+                    'Voltar a pagina inicial',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Cultura()),
-                    );
+                    Navigator.pop(context);
                   },
                 ),
               ),
@@ -206,12 +181,12 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildSampleImage(String assetPath) {
+  Widget _buildSampleImage(String assetPath, {double height = 400}) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(20), 
       child: Image.asset(
         assetPath,
-        height: 400,
+        height: height,
         fit: BoxFit.cover, 
         errorBuilder: (context, error, stackTrace) {
           return Container(

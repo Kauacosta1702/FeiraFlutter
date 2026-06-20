@@ -17,3 +17,22 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+   - assets/incas.jpg
+   - assets/Peru.jpg
+   - assets/iconsinca.png
+   - assets/historia1.webp
+   - assets/mapa-peru.webp
+   - assets/perga.jpg
+   - assets/pe.jpg
+   - assets/p.jpg
+   - assets/perg.jpg
+   - assets/historia2.jpg
+   - assets/HISTORIA3.png
+   - assets/cul.png
+   - assets/comid.png
+   - assets/in.png
+   - assets/Lhama.jpg
+   - assets/lha.png
+   - assets/c.png
+  
